@@ -15,6 +15,6 @@ export const Comments = () => {
   );
 };
 
-Comments.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape().isRequired),
-};
+// Comments.propTypes = {
+//   comments: PropTypes.arrayOf(PropTypes.shape().isRequired),
+// };
