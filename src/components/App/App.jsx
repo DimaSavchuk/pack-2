@@ -1,35 +1,20 @@
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import { Container, Header, Section, Text } from 'components';
-import { Gallery, Todos } from 'tabs';
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Layout } from '../../layout/Layout/Layout';
+import { routes } from '../../routes';
+import { Home, Options } from '../../views';
 
 export const App = () => {
   return (
     <>
-      <Header />
+      <Routes>
+        <Route path={routes.HOME} element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path={routes.OPTIONS} element={<Options />} />
+        </Route>
 
-      <Section>
-        <Container>
-          <Tabs>
-            <TabList>
-              <Tab>
-                <Text>Gallery</Text>
-              </Tab>
-              <Tab>
-                <Text>Todos</Text>
-              </Tab>
-            </TabList>
-
-            <TabPanel>
-              <Gallery />
-            </TabPanel>
-
-            <TabPanel>
-              <Todos />
-            </TabPanel>
-          </Tabs>
-        </Container>
-      </Section>
+        <Route path='*' element={<Navigate to={routes.HOME} replace />} />
+      </Routes>
     </>
   );
 };
